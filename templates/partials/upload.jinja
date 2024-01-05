@@ -1,0 +1,205 @@
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='assets/js/upload.js') }}"
+></script>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function () {
+      // Add an event listener to the form submission
+      document.getElementById('upload-form').addEventListener('submit', function (e) {
+          // Clear the file input after submission
+          document.getElementById('image').value = '';
+      });
+  });
+</script>
+
+<section
+  id="home"
+  class="grid h-max lg:h-[calc(100vh-64px)] scroll-mt-[64px] place-items-center"
+  style="
+    background: url(&quot;static/assets/images/bg/upload-section-bg.webp&quot;)
+      center center no-repeat;
+  "
+>
+  <div
+    id="upload-container"
+    class="mx-auto flex min-h-max w-4/5 flex-col rounded-2xl border-4 border-transparent bg-zinc-50 pb-4 opacity-95 md:h-4/5 lg:max-w-6xl xl:w-full"
+  >
+    <div id="upload-container-headers" class="mx-auto w-4/5 px-8 pt-8">
+      <ul class="flex justify-evenly border-b-2 border-zinc-200 px-8">
+        <li class="tab-button pb-2 text-center active" data-form-view="upload-form-one">
+            <h5 class="text-primary text-xl font-semibold">Upload Image</h5>
+            <span class="text-xs">Provide Clear OTC Medicine Image</span>
+        </li>
+        <li class="tab-button pb-2 text-center" data-form-view="result-form-one">
+            <h5 class="text-primary text-xl font-semibold">Check Output</h5>
+            <span class="text-xs">Hooray! Your Result is Here</span>
+        </li>
+      </ul>
+    </div>
+    <form
+      id="upload-form"
+      action="/upload"
+      method="POST"
+      enctype="multipart/form-data"
+      class="h-max lg:h-full w-full text-sm text-gray-600 grid place-items-center"
+      >
+      <div id="upload-form-one" class="tab-panel h-full relative grid w-full place-items-center py-8 lg:grid-cols-2">
+      <div id="image-preview-container" class="px-6 py-8 hidden w-full grid place-items-center" >
+        <img
+          id="image-preview"
+          class="h-[340px] w-full rounded-xl border-2 border-dashed border-zinc-400 object-cover px-3 py-4"
+          src=""
+          alt="image-preview"
+        />
+      </div>
+      <div id="image-input-container" class="px-6 py-8 w-full">
+        <label
+          id="image-label"
+          for="image"
+          class="py-21 text-secondary transition-transform duration-200 hover:scale-105 focus-within:ring-secondary group relative grid h-[340px] w-full cursor-pointer place-items-center rounded-xl border-2 border-dashed border-zinc-400 bg-white px-16 font-medium text-gray-700 transition-all focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2"
+        >
+          <div>
+            <svg
+              class="fill-secondary group-hover:fill-primary"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.5 3.75a6 6 0 00-5.98 6.496A5.25 5.25 0 006.75 20.25H18a4.5 4.5 0 002.206-8.423 3.75 3.75 0 00-4.133-4.303A6.001 6.001 0 0010.5 3.75zm2.03 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v4.94a.75.75 0 001.5 0v-4.94l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
+                clip-rule="evenodd"
+              />
+            </svg>
+
+            <span class="group-hover:text-primary">Upload a file</span>
+            <input
+              required
+              id="image"
+              name="image"
+              type="file"
+              class="sr-only"
+            />
+          </div>
+        </label>
+      </div>
+      <div
+        id="upload-options-container"
+        class="mx-auto grid space-y-3 w-4/5 place-items-center py-8 text-justify"
+      >
+        <div clas="text-container">
+          <h6 class="text-secondary font-bold">Turn On Augmentation:</h6>
+          <p>
+            Activating data augmentation enhances and diversifies your image,
+            increasing data variety for comprehensive exploration. 
+          </p>
+          <h6 class="text-secondary font-bold">Turn Off Augmentation:</h6>
+          <p>
+            Deactivating data augmentation leaves your content unaltered,
+            analyzing raw data for a direct evaluation
+          </p>
+        </div>
+
+        <label
+          class="border-primary relative mb-5 inline-flex cursor-pointer items-center rounded-md border bg-zinc-50 px-4 py-3 drop-shadow-md"
+        >
+          <span
+            class="mx-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >Data Augmentation</span
+          >
+          <input
+            class="checked:bg-primary checked:after:bg-primary checked:focus:border-primary checked:focus:bg-primary dark:checked:bg-primary dark:checked:after:bg-primary mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-neutral-300 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-neutral-600 dark:after:bg-neutral-400 dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+            type="checkbox"
+            role="switch"
+            id="data-aug-switch"
+            name="data-augmentation"
+          />
+        </label>
+        <button
+        id="upload-next"
+        type="submit"
+        class="bg-primary text-md hidden rounded-full flex gap-2 bg-gray-800 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+      >
+      <svg id="spinner" aria-hidden="true" class="hidden w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+      </svg>
+        <span id="upload-text">
+          Upload
+        </span>
+      </button>
+      </div>
+      </div>
+
+<div id="result-form-one" class="tab-panel h-full relative grid w-full place-items-center py-8 lg:grid-cols-2 hidden">
+  <!-- Image preview holder -->
+  <div id="result-preview-container" class="px-6 py-8 w-full grid place-items-center">
+    <img id="result-preview" class="h-[340px] w-full rounded-xl border-2 border-dashed border-zinc-400 object-cover px-3 py-4" src="" alt="result-preview" />
+  </div>
+  <!-- Result Text Container -->
+  <div id="result-options-container" class="mx-auto grid w-4/5 place-items-center py-8 text-justify space-y-3">
+    <h6 class="text-secondary font-bold text-">MEDetected:</h6>
+    <p>
+      <span class="text-secondary font-bold text">Authentic</span>: An authentic medicine is a genuine, safe Over-The-Counter (OTC) product, typically sold in a bounding box, indicating it's been verified as safe and authentic.
+    </p>
+    <p>
+      <span class="text-rose-500 font-bold text">Counterfeit</span>: A counterfeit medicine is a fake drug that may be harmful to your health. It's not manufactured in a controlled environment and may contain harmful substances. Counterfeit medicines are often sold without a box, indicating they may be potentially dangerous.
+    </p>
+    <div>
+      <!-- Upload Again Button -->
+      <button id="upload-again-btn" type="button" class="bg-primary text-md rounded-full bg-gray-800 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+        Upload Again
+      </button>
+    </div>
+  </div>
+
+  <div id="result-options-container-2" class="mx-auto grid w-4/5 place-items-center py-8 text-justify space-y-3">
+    <h6 class="text-gray-500 font-bold text-">NO OBJECT DETECTED!!:</h6>
+    <p>Make sure to follow the following requirements:</p>
+    <ul class="list-disc list-inside">
+      <li>Take a clear picture of the over-the-counter medicine.</li>
+      <li>Avoid too much brightness or darkness in the photo.</li>
+      <li>Make sure nothing blocks the view of the medicines.</li>
+      <li>Keep the camera 3-6 inches away from the medicines.</li>
+      <li>At least 50% of the medicines should be visible.</li>
+      <li>Capture either front, back, and side views of the medicine.</li>
+      <li>The medicine should be either Brand W, X, Y, and Z.</li>
+    </ul>
+    <div>
+      <!-- Upload Again Button -->
+      <button id="upload-again-btn-2" type="button" class="bg-primary text-md rounded-full bg-gray-800 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+        Upload Again
+      </button>      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+    </div>
+
+    </form>
+  </div>
+</section>
+
+<style>
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    #data-aug-button, #result-options-container {
+      margin-bottom: 200px;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    #upload-again-btn {
+      margin-top: -340px;
+    }
+  }
+
+</style>
+

@@ -1,0 +1,47 @@
+<section id="medicines" class="h-auto lg:h-auto scroll-mt-[64px] grid place-items-center">
+  <div id="container" class="mx-auto flex min-h-max w-max-content flex-col rounded-2xl border-4 border-transparent py-8 px-12 space-y-8 opacity-90 md:h-4/5 lg:h-auto xl:w-full">
+    <h2 class="text-center text-4xl font-bold text-primary"> Sample <span class="text-secondary">Medicines</span> </h2>
+
+    <!-- Existing paragraph content -->
+
+    <!-- Image grid for medicine brands as a two-column layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+      <!-- Image card for medicine brand W -->
+      <div class="rounded-lg overflow-hidden">
+        <img src="static/assets/images/medicines/alaxan.jpg" alt="Medicine W" class="w-full h-auto max-w-full" />
+        <!-- Add any additional content or labels for brand W -->
+      </div>
+
+      <!-- Image card for medicine brand X -->
+      <div class="rounded-lg overflow-hidden">
+        <img src="static/assets/images/medicines/bioflu.jpg" alt="Medicine X" class="w-full h-auto max-w-full" />
+        <!-- Add any additional content or labels for brand X -->
+      </div>
+
+      <!-- Image card for medicine brand Y -->
+      <div class="rounded-lg overflow-hidden">
+        <img src="static/assets/images/medicines/biogesic.jpg" alt="Medicine Y" class="w-full h-auto max-w-full" />
+        <!-- Add any additional content or labels for brand Y -->
+      </div>
+
+      <!-- Image card for medicine brand Z -->
+      <div class="rounded-lg overflow-hidden">
+        <img src="static/assets/images/medicines/neozep.jpg" alt="Medicine Z" class="w-full h-auto max-w-full" />
+        <!-- Add any additional content or labels for brand Z -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<style>
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    #container {
+      margin-bottom: 170px;
+    }
+    .grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

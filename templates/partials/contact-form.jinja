@@ -1,0 +1,74 @@
+<div
+id="contact-form"
+class="block rounded-lg w-full border border-slate-200  p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
+    <form action="/contact-form" method="POST">
+      <!--Name input-->
+      <div class="relative mb-6 border border-slate-200 rounded-md px-4 py-3">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          id="exampleInput7"
+          placeholder="Name" 
+          name = "name"
+          oninput="handleInput(this)"/>
+        <label
+          for="exampleInput7"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none "
+          >Name
+        </label>
+      </div>
+  
+      <!--Email input-->
+      <div class="relative mb-6 border border-slate-200 rounded-md px-4 py-3">
+        <input
+          type="email"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          id="exampleInput8"
+          placeholder="Email address" 
+          name = "email"
+          oninput="handleInput(this)" />
+        <label
+          for="exampleInput8"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none "
+          >Email address
+        </label>
+      </div>
+  
+      <!--Message textarea-->
+      <div class="relative mb-6 border border-slate-200 rounded-md px-4 py-3">
+        <textarea
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          id="exampleFormControlTextarea13"
+          rows="3"
+          placeholder="Message" 
+          name = "message"
+          oninput="handleInput(this)"></textarea>
+        <label
+          for="exampleFormControlTextarea13"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none "
+          >Message
+        </label>
+      </div>
+  
+      <!--Submit button-->
+      <button
+        type="submit"
+        class="inline-block w-full rounded-md bg-primary px-6 py-3 text-xl font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] ">
+        Send
+      </button>
+    </form>
+</div>
+
+<script>
+  function handleInput(inputElement) {
+    var label = inputElement.parentElement.querySelector('label');
+    // Check if the input is not empty
+    if (inputElement.value.trim() !== '') {
+      // Reduce the font size
+      label.style.fontSize = '0.6rem';
+    } else {
+      // Reset the font size
+      label.style.fontSize = '1rem';
+    }
+  }
+</script>
