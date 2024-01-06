@@ -66,41 +66,6 @@ def process_image(mode, file, destination_folder):
         # Return path
         return False, file_path
 
-    elif len(result_image) == 1:
-        # Detected counterfeit product, add warning message
-        print("Counterfeit product detected")
-
-        # Open original image
-        original_image = Image.open(os.path.join(destination_folder, filename))
-
-        # Create drawing object
-        draw = ImageDraw.Draw(original_image)
-
-        # Customize text
-        warning_text = "Warning: Counterfeit Product Detected!"
-        warning_text_color = "red"
-
-        # Initialize font with default font family and size 16
-        font = ImageFont.truetype("arial.ttf", 32)
-
-        # Calculate text size and position
-        warning_text_width, warning_text_height = font.getsize(warning_text)
-        warning_position = (
-            (original_image.width - warning_text_width) // 2,
-            original_image.height - warning_text_height - 20,
-        )
-
-        # Add warning text to the image
-        draw.text(warning_position, warning_text, fill=warning_text_color, font=font)
-
-        # Construct output path
-        file_path = os.path.join(destination_folder + "/outputs/", filename)
-
-        # Save processed image
-        original_image.save(file_path)
-
-        # Return path and a flag indicating a counterfeit product detected
-        return True, file_path
 
     else:
         # Plot detected objects and convert to PIL image
